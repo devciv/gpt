@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Great Person Tracker v1.0</title>
+    <link rel="icon" href="/favicon.png" />
+    <style>
+      * {
+        font-family: rubik, helvetica, arial, sans-serif;
+        background-color: #c4a27b;
+      }
+      /* table */
+      table {
+        border-collapse: collapse;
+        width: 50%; /* Sets each table to take up 50% of the container's width */
+        margin: 5px 5px;
+        font-size: 14px;
+        text-align: left;
+      }
+      table,
+      th,
+      td {
+        border: 2px solid #404040;
+      }
+      th {
+        text-align: center;
+      }
+      td {
+        padding: 1px 1px 0px 1px;
+      }
+
+      /* checkbox*/
+      td.checkbox-cell {
+        text-align: center; /* Horizontally center checkboxes */
+        vertical-align: middle; /* Vertically center checkboxes */
+      }
+      input[type="checkbox"] {
+        appearance: none; /* Removes browser's native styling */
+        -webkit-appearance: none; /* For Safari */
+        display: inline-block; /* Ensure checkbox aligns properly */
+
+        width: 20px; /* Set a fixed size */
+        height: 20px;
+        background-color: #e0c6a7; /* Default background color */
+        border: 2px solid #404040; /* Add a border */
+        border-radius: 4px; /* Optional: Rounded corners */
+        cursor: pointer; /* Add a pointer cursor */
+      }
+      input[type="checkbox"]:checked {
+        background-color: #b47c6a; /* Background when checked */
+        border-color: #404040; /* Optional: Change border color */
+      }
+
+      input[type="checkbox"]:checked::before {
+        content: "✔"; /* Add a checkmark */
+        display: block;
+        text-align: center;
+        color: #404040; /* Checkmark color */
+      }
+
+      /* horizontal adjacency for tables */
+      .container {
+        display: flex; /* Enables flexbox */
+        justify-content: space-between; /* Optional: Adds spacing between tables */
+      }
+
+      /* caption styles */
+      caption {
+        /* Border around the caption */
+        border: 2px solid #404040;
+        border-bottom: 0px;
+
+        font-weight: bold; /* Optional styling for the text */
+        text-align: center; /* Center-align the caption text */
+      }
+      .scientists caption {
+        background-color: #4dd2d2 !important;
+      }
+      .engineers caption {
+        background-color: #de9536 !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Great Scientists -->
+      <table class="scientists" border="1">
+        <caption>
+          Great Scientists
+        </caption>
+        <tr>
+          <th>Recruited</th>
+          <th>Name</th>
+          <th>Era</th>
+          <th>Bonus</th>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Zhang Heng</td>
+          <td>Classical</td>
+          <td>
+            Triggers the Eureka for Celestial Navigation, Mathematics, and
+            Engineering. If they are already triggered, instantly completes the
+            technology.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Aryabhata</td>
+          <td>Classical</td>
+          <td>
+            Triggers the Eureka for three random technologies from the Classical
+            or Medieval Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Euclid</td>
+          <td>Classical</td>
+          <td>
+            Triggers the Eureka for Mathematics and one random technology from
+            the Medieval Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Hypatia</td>
+          <td>Classical</td>
+          <td>
+            Libraries provide +1 Science. Instantly builds a Library in this
+            district.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Abu al-Qasim al-Zahrawi</td>
+          <td>Medieval</td>
+          <td>
+            Active: Triggers the Eureka for one random Medieval or Renaissance
+            era technology. Wounded units heal +5 HP per turn. Can activate
+            anywhere. Passive: +20 HP healing for all units on tile.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Hildegard of Bingen</td>
+          <td>Medieval</td>
+          <td>
+            Gain 100 Faith (on Standard speed). This Holy Site’s adjacency
+            bonuses gain an additional +Science bonus.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Omar Khayyam</td>
+          <td>Medieval</td>
+          <td>
+            Triggers the Eureka for two technologies and one Inspiration from
+            the Medieval or Renaissance Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Ibn Khaldun</td>
+          <td>Renaissance</td>
+          <td>
+            Chosen Campus gains +2 Housing and +1 Amenity. Increases non-Food
+            yields of improvements by +1.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Émilie du Châtelet</td>
+          <td>Renaissance</td>
+          <td>
+            Triggers the Eureka for three random technologies from the
+            Renaissance or Industrial Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Galileo Galilei</td>
+          <td>Renaissance</td>
+          <td>
+            Gain 250 Science (on Standard speed) for each adjacent Mountain
+            tile.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Isaac Newton</td>
+          <td>Renaissance</td>
+          <td>
+            Instantly builds a Library and a University in this district.
+            Universities provide +2 Science.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Charles Darwin</td>
+          <td>Industrial</td>
+          <td>
+            Gain 500 Science (on Standard speed) for each adjacent Natural
+            Wonder.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Dmitri Mendeleev</td>
+          <td>Industrial</td>
+          <td>
+            Triggers the Eureka for Chemistry and one random technology from the
+            Industrial Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>James Young</td>
+          <td>Industrial</td>
+          <td>
+            Triggers two random Eurekas from the Industrial or Modern Era.
+            Reveals Oil without the normal tech requirement.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Alan Turing</td>
+          <td>Modern</td>
+          <td>
+            Triggers the Eureka for Computers and one random technology from the
+            Modern Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Albert Einstein</td>
+          <td>Modern</td>
+          <td>
+            Triggers the Eureka for one random technology from the Modern Era.
+            Research Labs provide an additional +4 Science.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Alfred Nobel</td>
+          <td>Modern</td>
+          <td>
+            Triggers one random Eureka for one random technology from the Modern
+            or Atomic Era. Applies 100% to Great People recruited.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Erwin Schrödinger</td>
+          <td>Modern</td>
+          <td>
+            Triggers the Eureka for two random technologies from the Atomic or
+            Information Era.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Janaki Ammal</td>
+          <td>Atomic</td>
+          <td>
+            Gain 400 Science (on Standard speed) for each rainforest tile here
+            or adjacent.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Mary Leakey</td>
+          <td>Atomic</td>
+          <td>
+            Gain 350 Science (on Standard speed) for every Artifact in this
+            city. Artifacts in all your cities generate 300% of their normal
+            Tourism.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Margaret Mead</td>
+          <td>Atomic</td>
+          <td>Gain 1000 Science and Culture (on Standard speed).</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Carl Sagan</td>
+          <td>Information</td>
+          <td>
+            Provides 3000 Production (on Standard speed) towards a Space Race
+            construction project.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Stephanie Kwolek</td>
+          <td>Information</td>
+          <td>+100% Production towards Space Race projects.</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Abdus Salam</td>
+          <td>Information</td>
+          <td>
+            Triggers the Eureka for all technologies from the Information Era.
+          </td>
+        </tr>
+      </table>
+      <!-- Great Engineers -->
+      <table class="engineers" border="1">
+        <caption>
+          Great Engineers
+        </caption>
+        <tr>
+          <th>Recruited</th>
+          <th>Name</th>
+          <th>Era</th>
+          <th>Bonus</th>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Imhotep</td>
+          <td>Medieval</td>
+          <td>
+            Grants 175 Production toward wonder construction, doubled if the
+            wonder is from the Ancient or Classical Era. (2 charges)
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Bi Sheng</td>
+          <td>Medieval</td>
+          <td>
+            Lets this city build one more district than the population limit
+            allows. Triggers the Eureka for Printing technology.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Isidore of Miletus</td>
+          <td>Medieval</td>
+          <td>
+            Grants 215 Production towards wonder construction at standard speed.
+            (2 charges)
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>James of St. George</td>
+          <td>Medieval</td>
+          <td>
+            Instantly builds Ancient and Medieval Walls in this city. (3
+            charges)
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Filippo Brunelleschi</td>
+          <td>Renaissance</td>
+          <td>
+            Grants 315 Production towards wonder construction at standard speed.
+            (2 charges)
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Leonardo da Vinci</td>
+          <td>Renaissance</td>
+          <td>
+            Triggers the Eureka for one random technology of the Modern Era.
+            Workshops provide +3 Culture.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Mimar Sinan</td>
+          <td>Renaissance</td>
+          <td>
+            +1 Housing for this city, +1 Amenity for this city. Culture Bomb
+            adjacent tiles when completing an Industrial Zone in any city.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Ada Lovelace</td>
+          <td>Industrial</td>
+          <td>
+            Lets this city build one more district than the population limit
+            allows. Triggers the Eureka for the Computers technology.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Gustave Eiffel</td>
+          <td>Industrial</td>
+          <td>
+            Grants 480 Production towards wonder construction at standard speed.
+            (2 charges)
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>James Watt</td>
+          <td>Industrial</td>
+          <td>
+            Instantly builds a Workshop and a Factory in this district.
+            Factories provide +2 Production to their city.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Shah Jahan</td>
+          <td>Modern</td>
+          <td>
+            Grants 920 Production towards wonder construction, capped at half
+            your current treasury, then reduces your Gold value by the amount of
+            purchased Production.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Alvar Aalto</td>
+          <td>Modern</td>
+          <td>This city provides +1 Appeal to any tile it owns.</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Nikola Tesla</td>
+          <td>Modern</td>
+          <td>
+            This district’s regional buildings provide +2 Production and reach 3
+            tiles farther. Activates in your Industrial Zone.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Robert Goddard</td>
+          <td>Atomic</td>
+          <td>
+            Triggers the Eureka for Rocketry. +20% Production towards Space Race
+            projects.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Jane Drew</td>
+          <td>Atomic</td>
+          <td>Gain +4 Housing and +3 Amenities in this city.</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>John Roebling</td>
+          <td>Atomic</td>
+          <td>Gain +2 Housing and +1 Amenities in a city. (2 charges)</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Sergei Korolev</td>
+          <td>Atomic</td>
+          <td>Grants 1500 Production towards a Space Race project.</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Joseph Paxton</td>
+          <td>Atomic</td>
+          <td>
+            This Entertainment Complex’s regional buildings provide +1 Amenity.
+            This district’s regional buildings reach 3 tiles farther.
+          </td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Charles Correa</td>
+          <td>Information</td>
+          <td>This city provides +2 Appeal to any tile it owns.</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Wernher von Braun</td>
+          <td>Information</td>
+          <td>+100% Production towards Space Race projects.</td>
+        </tr>
+        <tr>
+          <td class="checkbox-cell"><input type="checkbox" /></td>
+          <td>Kenzo Tange</td>
+          <td>Information</td>
+          <td>
+            Grants +7 Tourism in each of this city’s districts equal to its
+            adjacency bonus (halved for Gold).
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
