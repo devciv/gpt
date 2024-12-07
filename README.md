@@ -1,2 +1,1 @@
-# gpt
-Great Person Tracker
+Great Person Tracker for Science Victories
