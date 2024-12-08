@@ -9,6 +9,9 @@
       * {
         font-family: rubik, helvetica, arial, sans-serif;
         background-color: #c4a27b;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; /* Ensure padding/borders are included in width/height */
       }
       /* table */
       table {
@@ -17,17 +20,30 @@
         margin: 5px 5px;
         font-size: 14px;
         text-align: left;
+        border: 2px solid #404040;
       }
-      table,
+
       th,
       td {
         border: 2px solid #404040;
+        padding: 5px; /* Consistent padding */
       }
       th {
         text-align: center;
       }
-      td {
-        padding: 1px 1px 0px 1px;
+      /* caption styles */
+      caption {
+        font-weight: bold; /* Optional styling for the text */
+        text-align: center; /* Center-align the caption text */
+        /* Border around the caption */
+        border: 2px solid #404040;
+        border-bottom: none;
+      }
+      .scientists caption {
+        background-color: #4dd2d2 !important;
+      }
+      .engineers caption {
+        background-color: #de9536 !important;
       }
 
       /* checkbox*/
@@ -39,7 +55,8 @@
         appearance: none; /* Removes browser's native styling */
         -webkit-appearance: none; /* For Safari */
         display: inline-block; /* Ensure checkbox aligns properly */
-
+        vertical-align: middle;
+        position: relative;
         width: 20px; /* Set a fixed size */
         height: 20px;
         background-color: #e0c6a7; /* Default background color */
@@ -49,7 +66,14 @@
       }
       input[type="checkbox"]:checked {
         background-color: #b47c6a; /* Background when checked */
-        border-color: #404040; /* Optional: Change border color */
+      }
+
+      input[type="checkbox"]::before {
+        position: absolute; /* Positioned relative to the checkbox */
+        top: -15%;
+        left: 10%;
+        font-size: 16px;
+        /* Adjust size for the checkmark */
       }
 
       input[type="checkbox"]:checked::before {
@@ -64,29 +88,13 @@
         display: flex; /* Enables flexbox */
         justify-content: space-between; /* Optional: Adds spacing between tables */
       }
-
-      /* caption styles */
-      caption {
-        /* Border around the caption */
-        border: 2px solid #404040;
-        border-bottom: 0px;
-
-        font-weight: bold; /* Optional styling for the text */
-        text-align: center; /* Center-align the caption text */
-      }
-      .scientists caption {
-        background-color: #4dd2d2 !important;
-      }
-      .engineers caption {
-        background-color: #de9536 !important;
-      }
     </style>
   </head>
 
   <body>
     <div class="container">
       <!-- Great Scientists -->
-      <table class="scientists" border="1">
+      <table class="scientists">
         <caption>
           Great Scientists
         </caption>
@@ -310,7 +318,7 @@
         </tr>
       </table>
       <!-- Great Engineers -->
-      <table class="engineers" border="1">
+      <table class="engineers">
         <caption>
           Great Engineers
         </caption>
